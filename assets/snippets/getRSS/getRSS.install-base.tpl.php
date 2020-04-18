@@ -1,6 +1,6 @@
 <?php
 /*
-* getRSS 
+* getRSS
 *
 * RSS/Atomフィードを取得する簡易スニペット
 * [[getRSS &url &n &tpl]] / [*tv_url:getRSS(n)*]
@@ -31,14 +31,20 @@ $success = $feed->init();
 
 $c=1;
 $r="";
+$cate = array();
 
 if ($success){
   foreach ($feed->get_items() as $e ) {
+    foreach ((array)$e->get_categories() as $category){
+      $cate[] = $category->get_label();
+    };
     $ph=array(
       'url'=>$e->get_link(),
       'date'=>$e->get_date(),
       'title'=> $e->get_title(),
       'summary'=>$e->get_description(),
+      'categories'=>implode(',',$cate),
+      'category'=>$cate[0],
     );
     $r .= $modx->parseText($format, $ph);
     if($c++==$n)break;

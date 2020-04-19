@@ -19,13 +19,13 @@ if(!isset($tpl)){
 }
 
 //where is simplepie?
-$autoload = $modx->config['base_path'] . 'assets/snippets/getRSS/simplepie/autoloader.php';
+$autoload = MODX_BASE_PATH . 'assets/snippets/getRSS/simplepie/autoloader.php';
 require_once($autoload);
 
 $feed = new SimplePie();
 $feed->set_feed_url($url);
-if(!file_exists($modx->config['base_path'] . "assets/cache/rss/"))mkdir($modx->config['base_path'] . "assets/cache/rss/", 0777, true);
-$feed->set_cache_location($modx->config['base_path'] . "assets/cache/rss/");
+if(!file_exists(MODX_BASE_PATH . "assets/cache/rss/"))mkdir(MODX_BASE_PATH . "assets/cache/rss/", 0777, true);
+$feed->set_cache_location(MODX_BASE_PATH . "assets/cache/rss/");
 $feed->set_cache_duration(1800);
 $success = $feed->init();
 

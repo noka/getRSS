@@ -24,7 +24,7 @@ class getRss {
         require_once(__DIR__ . '/simplepie/autoloader.php');
 
         $feed = new SimplePie();
-        $feed->set_feed_url(getRss::param('url'));
+        $feed->set_feed_url(static::param('url'));
         if(!is_dir(MODX_BASE_PATH . 'assets/cache/rss/')) {
             mkdir(MODX_BASE_PATH . 'assets/cache/rss/', 0777, true);
         }

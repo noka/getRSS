@@ -31,10 +31,10 @@ $success = $feed->init();
 
 $c=1;
 $r="";
-$cate = array();
 
 if ($success){
   foreach ($feed->get_items() as $e ) {
+    $cate = array();
     foreach ((array)$e->get_categories() as $category){
       $cate[] = $category->get_label();
     };
